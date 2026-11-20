@@ -5,7 +5,7 @@ use crate::state::GameState;
 
 pub struct WeaponPlugin;
 
-/// Caractéristiques de l'unique arme (modifiées par les upgrades).
+/// Caractéristiques de l'unique arme (modifiées par les upgrades). 123
 #[derive(Resource)]
 pub struct WeaponStats {
     pub damage: f32,

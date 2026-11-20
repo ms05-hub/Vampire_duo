@@ -28,7 +28,7 @@ fn apply_spawn_cmds(
     let Ok(rx) = rx.0.lock() else { return };
 
     let image: Handle<Image> = asset_server.load("enemy.png");
-
+    const ENEMY_SIZE: f32 = 90.0;
     for _ in 0..20 {
         let Ok(cmd) = rx.try_recv() else { break };
         let offset = Vec2::from_angle(cmd.angle) * 700.0;
@@ -36,10 +36,10 @@ fn apply_spawn_cmds(
             Enemy,
             Health(cmd.health),
             Speed(80.0),
-            Radius(14.0), // à ajuster à la taille affichée
+            Radius(ENEMY_SIZE), // à ajuster à la taille affichée
             Sprite {
                 image: image.clone(),
-                custom_size: Some(Vec2::splat(32.0)),
+                custom_size: Some(Vec2::splat(ENEMY_SIZE)),
                 ..default()
             },
             Transform::from_translation(player_tf.translation + offset.extend(0.0)),

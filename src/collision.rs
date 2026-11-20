@@ -25,7 +25,6 @@ fn projectile_hits(
     mut enemies: Query<(Entity, &Transform, &Radius, &mut Health), With<Enemy>>,
 ) {
     // Double boucle : suffisant pour quelques centaines d'entités.
-    // TODO (si ça rame) : grille spatiale.
     for (p_entity, p_tf, p_r, proj) in &projectiles {
         for (e_entity, e_tf, e_r, mut hp) in &mut enemies {
             if hp.0 <= 0.0 {
